@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When God Speaks | Gozom International Ministries</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #04112B;
+    --navy-mid: #091C45;
+    --gold: #C9960C;
+    --gold-bright: #F0C040;
+    --gold-light: #FFE080;
+    --white: #FFFFFF;
+    --text: #D0DCF0;
+    --muted: rgba(208,220,240,0.5);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Montserrat',sans-serif; background:var(--navy); color:var(--text); overflow-x:hidden; }
+
+  .bg-layer {
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(201,150,12,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,150,12,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(9,28,69,0.85) 0%, var(--navy) 100%);
+  }
+  .stars { position:fixed; inset:0; pointer-events:none; z-index:0; }
+  .star { position:absolute; background:var(--gold-light); border-radius:50%; animation:twinkle ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.1;transform:scale(1);} 50%{opacity:0.8;transform:scale(1.5);} }
+
+  /* HERO */
+  .hero {
+    position:relative; z-index:1;
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; padding:60px 20px 80px;
+    border-bottom:1px solid rgba(201,150,12,0.15);
+  }
+  .ministry-tag {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:5px; text-transform:uppercase; color:var(--gold-bright);
+    opacity:0.75; margin-bottom:20px; animation:fadeUp 0.7s ease both;
+  }
+  .hero-label {
+    font-family:'Cormorant Garamond',serif; font-size:14px; font-weight:600;
+    letter-spacing:4px; color:var(--gold); text-transform:uppercase;
+    margin-bottom:12px; opacity:0.9; animation:fadeUp 0.7s 0.1s ease both;
+  }
+  .hero-title {
+    font-family:'Playfair Display',serif; font-size:clamp(44px,13vw,90px);
+    font-weight:900; line-height:1.0; color:var(--white);
+    text-shadow:0 0 60px rgba(201,150,12,0.25);
+    animation:fadeUp 0.7s 0.15s ease both;
+  }
+  .hero-title span {
+    display:block;
+    background:linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold-light) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    filter:drop-shadow(0 0 20px rgba(240,192,64,0.45));
+  }
+  .hero-divider {
+    width:120px; height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    margin:24px auto; animation:fadeUp 0.7s 0.2s ease both;
+  }
+  .prophecy-tag {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(13px,3vw,17px);
+    font-style:italic; color:var(--text); opacity:0.65;
+    max-width:500px; line-height:1.8; margin-bottom:28px;
+    animation:fadeUp 0.7s 0.22s ease both;
+  }
+  .event-detail-box {
+    background:linear-gradient(135deg, rgba(201,150,12,0.1), rgba(9,28,69,0.7));
+    border:1px solid rgba(201,150,12,0.25); border-radius:8px;
+    padding:20px 32px; max-width:520px; margin-bottom:28px;
+    animation:fadeUp 0.7s 0.28s ease both;
+  }
+  .event-detail-box p {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:3px; color:var(--gold); opacity:0.65;
+    text-transform:uppercase; margin-bottom:8px;
+  }
+  .event-detail-box h3 {
+    font-family:'Playfair Display',serif; font-size:clamp(16px,4vw,22px);
+    font-weight:700; color:var(--white); line-height:1.5;
+  }
+  .pills {
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+    margin-bottom:28px; animation:fadeUp 0.7s 0.33s ease both;
+  }
+  .pill {
+    display:flex; align-items:center; gap:7px;
+    background:rgba(255,255,255,0.04); border:1px solid rgba(201,150,12,0.2);
+    border-radius:50px; padding:9px 18px;
+    font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600;
+    color:var(--text); letter-spacing:0.5px;
+  }
+  .host-block { margin-bottom:28px; animation:fadeUp 0.7s 0.38s ease both; }
+  .host-label {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:4px; color:var(--gold); opacity:0.65;
+    text-transform:uppercase; margin-bottom:4px;
+  }
+  .host-name {
+    font-family:'Playfair Display',serif; font-size:clamp(18px,5vw,28px);
+    font-weight:900; color:var(--white); letter-spacing:1px;
+  }
+  .free-note {
+    display:inline-flex; align-items:center; gap:8px;
+    background:linear-gradient(135deg, rgba(201,150,12,0.12), rgba(240,192,64,0.06));
+    border:1px solid rgba(201,150,12,0.3); border-radius:6px;
+    padding:12px 26px; margin-bottom:36px;
+    font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:2px; color:var(--gold-light); text-transform:uppercase;
+    animation:fadeUp 0.7s 0.43s ease both;
+  }
+  .cta-btn {
+    display:inline-block; font-family:'Montserrat',sans-serif; font-size:12px;
+    font-weight:700; letter-spacing:3px; text-transform:uppercase;
+    color:var(--navy); text-decoration:none;
+    background:linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 60%, var(--gold-light) 100%);
+    padding:18px 52px; border-radius:4px;
+    box-shadow:0 8px 40px rgba(201,150,12,0.35), 0 0 0 2px rgba(201,150,12,0.2);
+    transition:all 0.3s; animation:fadeUp 0.7s 0.48s ease both;
+  }
+  .cta-btn:hover { transform:translateY(-3px); box-shadow:0 16px 60px rgba(201,150,12,0.5); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+
+  /* COUNTDOWN */
+  .cd-wrap {
+    position:relative; z-index:1;
+    background:linear-gradient(135deg, rgba(9,28,69,0.7), rgba(4,17,43,0.9));
+    border-top:1px solid rgba(201,150,12,0.12); border-bottom:1px solid rgba(201,150,12,0.12);
+    padding:48px 20px; text-align:center;
+  }
+  .cd-title {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:4px; color:var(--gold); opacity:0.6;
+    text-transform:uppercase; margin-bottom:24px;
+  }
+  .cd-boxes { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .cd-box {
+    background:rgba(255,255,255,0.03); border:1px solid rgba(201,150,12,0.18);
+    border-radius:8px; padding:20px 22px; min-width:78px; text-align:center;
+  }
+  .cd-num {
+    font-family:'Playfair Display',serif; font-size:clamp(30px,9vw,52px);
+    font-weight:900; color:var(--gold-bright); display:block; line-height:1;
+    text-shadow:0 0 30px rgba(240,192,64,0.35);
+  }
+  .cd-label {
+    font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700;
+    letter-spacing:3px; color:var(--gold); opacity:0.55;
+    text-transform:uppercase; display:block; margin-top:6px;
+  }
+  .cd-sep { font-family:'Playfair Display',serif; font-size:38px; color:var(--gold); opacity:0.22; align-self:center; padding-bottom:14px; }
+
+  /* COUNTER */
+  .counter-sec {
+    position:relative; z-index:1;
+    padding:64px 20px; text-align:center; background:var(--navy);
+  }
+  .counter-eyebrow {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:4px; color:var(--gold); opacity:0.6;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .counter-big {
+    font-family:'Playfair Display',serif; font-size:clamp(64px,18vw,110px);
+    font-weight:900; line-height:1;
+    background:linear-gradient(135deg, var(--gold), var(--gold-bright), var(--gold-light));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    filter:drop-shadow(0 0 30px rgba(201,150,12,0.3));
+  }
+  .counter-sub {
+    font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:600;
+    letter-spacing:3px; color:var(--text); opacity:0.45;
+    text-transform:uppercase; margin-top:6px;
+  }
+
+  /* FORM */
+  .form-sec { position:relative; z-index:1; max-width:660px; margin:0 auto; padding:20px 20px 80px; }
+  .sec-head { text-align:center; margin-bottom:44px; }
+  .sec-eye {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:4px; color:var(--gold); opacity:0.65;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .sec-title {
+    font-family:'Playfair Display',serif; font-size:clamp(24px,7vw,38px);
+    font-weight:900; color:var(--white); line-height:1.2;
+  }
+  .sec-rule {
+    width:60px; height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    margin:16px auto 0;
+  }
+  .form-card {
+    background:linear-gradient(145deg, rgba(9,28,69,0.65), rgba(4,17,43,0.9));
+    border:1px solid rgba(201,150,12,0.18); border-radius:14px;
+    padding:40px 32px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,150,12,0.07);
+  }
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:500px){ .form-grid{grid-template-columns:1fr;} .form-card{padding:28px 16px;} }
+  .fg { margin-bottom:18px; }
+  .fg.full { grid-column:1/-1; }
+  label {
+    display:block; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:2px; color:var(--gold-bright); text-transform:uppercase;
+    margin-bottom:8px; opacity:0.8;
+  }
+  input, select, textarea {
+    width:100%; background:rgba(255,255,255,0.04);
+    border:1px solid rgba(201,150,12,0.18); border-radius:6px;
+    padding:13px 16px; color:var(--white);
+    font-family:'Montserrat',sans-serif; font-size:14px;
+    outline:none; transition:border-color 0.3s,box-shadow 0.3s,background 0.3s;
+    -webkit-appearance:none;
+  }
+  input:focus,select:focus,textarea:focus {
+    border-color:var(--gold-bright); box-shadow:0 0 0 3px rgba(240,192,64,0.1);
+    background:rgba(240,192,64,0.03);
+  }
+  select option { background:var(--navy-mid); color:var(--white); }
+  input::placeholder,textarea::placeholder { color:rgba(208,220,240,0.25); }
+  textarea { resize:vertical; min-height:85px; }
+  .radio-row { display:flex; gap:10px; flex-wrap:wrap; }
+  .radio-opt { flex:1; min-width:120px; }
+  .radio-opt input[type="radio"] { display:none; }
+  .radio-opt label {
+    display:flex; align-items:center; justify-content:center;
+    padding:12px 8px; border:1px solid rgba(201,150,12,0.18);
+    border-radius:6px; cursor:pointer; font-size:10px;
+    transition:all 0.3s; letter-spacing:1px; margin-bottom:0;
+    text-align:center; line-height:1.3;
+  }
+  .radio-opt input[type="radio"]:checked + label {
+    background:rgba(240,192,64,0.12); border-color:var(--gold-bright); color:var(--gold-light);
+  }
+  .submit-btn {
+    width:100%;
+    background:linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 60%, var(--gold-light) 100%);
+    border:none; border-radius:6px; padding:18px;
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
+    letter-spacing:3px; text-transform:uppercase; color:var(--navy);
+    cursor:pointer; margin-top:10px; transition:all 0.3s;
+    box-shadow:0 8px 32px rgba(201,150,12,0.3);
+  }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 16px 48px rgba(201,150,12,0.5); }
+  .submit-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+  /* REGISTRANTS */
+  .regs-sec { position:relative; z-index:1; max-width:660px; margin:0 auto; padding:0 20px 80px; }
+  .reg-list { display:flex; flex-direction:column; gap:10px; margin-top:32px; }
+  .reg-card {
+    background:rgba(9,28,69,0.5); border:1px solid rgba(201,150,12,0.1);
+    border-radius:8px; padding:14px 18px; display:flex; align-items:center; gap:14px;
+    animation:fadeUp 0.4s ease both;
+  }
+  .reg-av {
+    width:40px; height:40px; border-radius:50%;
+    background:linear-gradient(135deg, var(--gold), var(--gold-bright));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display',serif; font-weight:900; font-size:15px;
+    color:var(--navy); flex-shrink:0;
+  }
+  .reg-info { flex:1; }
+  .reg-name { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; color:var(--white); }
+  .reg-meta { font-size:11px; color:var(--muted); margin-top:2px; }
+  .reg-num {
+    font-family:'Cormorant Garamond',serif; font-size:12px; font-weight:700;
+    color:var(--gold); background:rgba(201,150,12,0.08);
+    border:1px solid rgba(201,150,12,0.18); border-radius:20px;
+    padding:3px 12px; flex-shrink:0;
+  }
+  .empty-state {
+    text-align:center; opacity:0.35; font-family:'Cormorant Garamond',serif;
+    font-size:15px; letter-spacing:2px; padding:48px 0;
+  }
+
+  /* SUCCESS OVERLAY */
+  .overlay {
+    display:none; position:fixed; inset:0;
+    background:rgba(0,0,0,0.9); z-index:1000;
+    align-items:center; justify-content:center; padding:20px;
+  }
+  .overlay.active { display:flex; }
+  .success-box {
+    background:linear-gradient(145deg, var(--navy-mid), var(--navy));
+    border:2px solid var(--gold-bright); border-radius:18px;
+    padding:52px 36px; text-align:center; max-width:440px; width:100%;
+    box-shadow:0 0 100px rgba(240,192,64,0.22);
+    animation:popIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes popIn { from{transform:scale(0.65);opacity:0;} to{transform:scale(1);opacity:1;} }
+  .success-icon { font-size:60px; margin-bottom:16px; }
+  .success-title {
+    font-family:'Playfair Display',serif; font-size:26px; font-weight:900;
+    color:var(--gold-bright); margin-bottom:14px;
+  }
+  .success-text {
+    font-family:'Montserrat',sans-serif; font-size:13px; line-height:1.8;
+    color:var(--text); opacity:0.85; margin-bottom:28px;
+  }
+  .tg-btn {
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background:#2AABEE; color:white; text-decoration:none;
+    padding:16px 28px; border-radius:8px;
+    font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700;
+    letter-spacing:1px; margin-bottom:14px; transition:all 0.3s;
+    box-shadow:0 8px 32px rgba(42,171,238,0.3);
+  }
+  .tg-btn:hover { background:#1a96d4; transform:translateY(-2px); }
+  .overlay-close {
+    background:transparent; border:1px solid rgba(201,150,12,0.3);
+    border-radius:6px; padding:12px 32px;
+    font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:2px; color:var(--gold); cursor:pointer;
+    text-transform:uppercase; transition:all 0.3s;
+  }
+  .overlay-close:hover { background:rgba(201,150,12,0.08); }
+
+  /* FOOTER */
+  footer {
+    position:relative; z-index:1;
+    background:rgba(4,17,43,0.96); border-top:1px solid rgba(201,150,12,0.1);
+    padding:48px 20px; text-align:center;
+  }
+  .foot-logo {
+    font-family:'Playfair Display',serif; font-size:22px; font-weight:900;
+    color:var(--gold-bright); letter-spacing:3px; margin-bottom:4px;
+  }
+  .foot-min {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:4px; color:var(--text); opacity:0.35;
+    text-transform:uppercase; margin-bottom:24px;
+  }
+  .foot-wa {
+    display:inline-flex; align-items:center; gap:8px;
+    background:#128C7E; color:white; text-decoration:none;
+    padding:12px 28px; border-radius:50px;
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
+    transition:all 0.3s;
+  }
+  .foot-wa:hover { background:#075E54; transform:translateY(-2px); }
+  .foot-copy {
+    font-size:10px; color:rgba(208,220,240,0.18); letter-spacing:2px;
+    margin-top:28px; font-family:'Montserrat',sans-serif; text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="stars" id="stars"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="ministry-tag">Gozom International Ministries</p>
+  <p class="hero-label">3 Days Special Prophetic Program</p>
+  <h1 class="hero-title">When<br><span>God Speaks</span></h1>
+  <div class="hero-divider"></div>
+  <p class="prophecy-tag">
+    There will be prophetic declarations that will cause you to experience a supernatural shift
+  </p>
+  <div class="event-detail-box">
+    <p>Date and Time</p>
+    <h3>Friday 15th &ndash; Sunday 17th May, 2026<br>8:00 PM Every Night</h3>
+  </div>
+  <div class="pills">
+    <div class="pill">📅 May 15, 16 &amp; 17, 2026</div>
+    <div class="pill">🕗 8:00 PM Nightly</div>
+    <div class="pill">📲 Via Telegram</div>
+    <div class="pill">🌐 Online</div>
+  </div>
+  <div class="host-block">
+    <p class="host-label">Host</p>
+    <p class="host-name">Apostle Oluwaseun Israel</p>
+  </div>
+  <div class="free-note">✨ Registration is Free but Compulsory</div>
+  <a href="#register" class="cta-btn">Register Now &mdash; It's Free</a>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="cd-wrap">
+  <p class="cd-title">Program begins in</p>
+  <div class="cd-boxes">
+    <div class="cd-box"><span class="cd-num" id="cd-days">000</span><span class="cd-label">Days</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-box"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Mins</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-box"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Secs</span></div>
+  </div>
+</div>
+
+<!-- COUNTER -->
+<div class="counter-sec">
+  <p class="counter-eyebrow">Registered Participants</p>
+  <div class="counter-big" id="counter">0</div>
+  <p class="counter-sub">and counting</p>
+</div>
+
+<!-- FORM -->
+<section class="form-sec" id="register">
+  <div class="sec-head">
+    <p class="sec-eye">Secure Your Place</p>
+    <h2 class="sec-title">Register for the Program</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="form-card">
+    <div class="form-grid">
+      <div class="fg">
+        <label for="firstname">First Name *</label>
+        <input type="text" id="firstname" placeholder="Your first name" required>
+      </div>
+      <div class="fg">
+        <label for="lastname">Last Name *</label>
+        <input type="text" id="lastname" placeholder="Your last name" required>
+      </div>
+      <div class="fg">
+        <label for="phone">WhatsApp Number *</label>
+        <input type="tel" id="phone" placeholder="e.g. 08012345678" required>
+      </div>
+      <div class="fg">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Optional">
+      </div>
+      <div class="fg">
+        <label for="state">State of Origin *</label>
+        <select id="state" required>
+          <option value="">Select your state</option>
+          <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option>
+          <option>Anambra</option><option>Bauchi</option><option>Bayelsa</option>
+          <option>Benue</option><option>Borno</option><option>Cross River</option>
+          <option>Delta</option><option>Ebonyi</option><option>Edo</option>
+          <option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option>
+          <option>Gombe</option><option>Imo</option><option>Jigawa</option>
+          <option>Kaduna</option><option>Kano</option><option>Katsina</option>
+          <option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+          <option>Lagos</option><option>Nasarawa</option><option>Niger</option>
+          <option>Ogun</option><option>Ondo</option><option>Osun</option>
+          <option>Oyo</option><option>Plateau</option><option>Rivers</option>
+          <option>Sokoto</option><option>Taraba</option><option>Yobe</option>
+          <option>Zamfara</option><option>Outside Nigeria</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="gender">Gender *</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+      <div class="fg full">
+        <label>Have You Attended a Gozom Program Before? *</label>
+        <div class="radio-row">
+          <div class="radio-opt">
+            <input type="radio" name="returning" id="ret-yes" value="Yes">
+            <label for="ret-yes">Yes, I have</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="returning" id="ret-no" value="No, First Time">
+            <label for="ret-no">No, First Time</label>
+          </div>
+        </div>
+      </div>
+      <div class="fg full">
+        <label for="heardabout">How Did You Hear About This Program? *</label>
+        <select id="heardabout" required>
+          <option value="">Select</option>
+          <option>WhatsApp</option>
+          <option>Facebook</option>
+          <option>Instagram</option>
+          <option>Telegram</option>
+          <option>Friend or Family</option>
+          <option>Flyer / Poster</option>
+          <option>Church Announcement</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg full">
+        <label for="expectation">What Are You Believing God For? (Optional)</label>
+        <textarea id="expectation" placeholder="Share your expectation or prayer point for this program..."></textarea>
+      </div>
+    </div>
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+      Register &amp; Get Telegram Link
+    </button>
+  </div>
+</section>
+
+<!-- REGISTRANTS -->
+<section class="regs-sec">
+  <div class="sec-head">
+    <p class="sec-eye">Who Is Coming</p>
+    <h2 class="sec-title">Registered Participants</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="reg-list" id="regList">
+    <p class="empty-state">No registrations yet. Be the first to sign up!</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">GOZOM</div>
+  <p class="foot-min">International Ministries</p>
+  <a href="https://wa.me/2348147560000?text=Hello%2C%20I%20want%20to%20inquire%20about%20the%20When%20God%20Speaks%20Program%202026"
+     class="foot-wa" target="_blank">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    WhatsApp: 08147560000
+  </a>
+  <p class="foot-copy">When God Speaks 2026 &bull; Gozom International Ministries</p>
+</footer>
+
+<!-- SUCCESS OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="success-box">
+    <div class="success-icon">🔥</div>
+    <h2 class="success-title">You're Registered!</h2>
+    <p class="success-text" id="successMsg">Your registration is confirmed. Click below to join the Telegram group where the program will hold.</p>
+    <a href="https://t.me/+QSvmD3XwIkFjMWFk" target="_blank" class="tg-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.286c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.323l-2.95-.924c-.642-.204-.657-.643.136-.953l11.527-4.445c.535-.194 1.003.131.37.247z"/>
+      </svg>
+      Join the Telegram Group Now
+    </a>
+    <button class="overlay-close" onclick="document.getElementById('overlay').classList.remove('active')">Close</button>
+  </div>
+</div>
+
+<script>
+  // Stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;`;
+    starsEl.appendChild(s);
+  }
+
+  // Supabase config
+  const SUPA_URL = 'https://oejusnucofijyxkkblcy.supabase.co';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9lanVzbnVjb2Zpanl4a2tibGN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NzM1ODIsImV4cCI6MjA5MjU0OTU4Mn0.V5C4J2JMVadq1ZtoR1v0-7Y65MzLwiCiSOxe89radDg';
+
+  async function supaFetch(path, options = {}) {
+    const res = await fetch(`${SUPA_URL}/rest/v1/${path}`, {
+      headers: {
+        'apikey': SUPA_KEY,
+        'Authorization': `Bearer ${SUPA_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation',
+        ...options.headers
+      },
+      ...options
+    });
+    return res;
+  }
+
+  // Counter animation
+  function animateCounter(target) {
+    const el = document.getElementById('counter');
+    if (!target) { el.textContent = '0'; return; }
+    let n = 0; const step = Math.ceil(target / 40);
+    const t = setInterval(() => { n = Math.min(n + step, target); el.textContent = n; if (n >= target) clearInterval(t); }, 30);
+  }
+
+  // Render list
+  function renderList(list) {
+    const el = document.getElementById('regList');
+    if (!list.length) { el.innerHTML = '<p class="empty-state">No registrations yet. Be the first to sign up!</p>'; return; }
+    el.innerHTML = list.slice().reverse().map((r, i) => {
+      const init = ((r.firstname||'')[0]||'') + ((r.lastname||'')[0]||'');
+      const num = list.length - i;
+      return `<div class="reg-card">
+        <div class="reg-av">${init.toUpperCase()}</div>
+        <div class="reg-info">
+          <div class="reg-name">${r.firstname} ${r.lastname}</div>
+          <div class="reg-meta">${r.state} &bull; ${r.gender} &bull; ${r.attended_before}</div>
+        </div>
+        <div class="reg-num">#${num}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Load from Supabase on page open
+  async function initPage() {
+    try {
+      const res = await supaFetch('registrations?select=*&order=created_at.asc');
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        animateCounter(data.length);
+        renderList(data);
+      }
+    } catch(e) {
+      console.log('Could not load registrations:', e);
+    }
+  }
+  initPage();
+
+  // Countdown
+  function tick() {
+    const target = new Date('2026-05-15T20:00:00');
+    const diff = target - new Date();
+    if (diff <= 0) {
+      document.querySelector('.cd-wrap').innerHTML = '<p style="font-family:\'Playfair Display\',serif;color:var(--gold-bright);font-size:22px;letter-spacing:3px;text-align:center;padding:20px;">The Program is LIVE Now!</p>';
+      return;
+    }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(3,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Submit
+  async function submitForm() {
+    const firstname = document.getElementById('firstname').value.trim();
+    const lastname = document.getElementById('lastname').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const state = document.getElementById('state').value;
+    const gender = document.getElementById('gender').value;
+    const returning = document.querySelector('input[name="returning"]:checked')?.value || '';
+    const heardabout = document.getElementById('heardabout').value;
+    const expectation = document.getElementById('expectation').value.trim();
+
+    if (!firstname || !lastname || !phone || !state || !gender || !returning || !heardabout) {
+      alert('Please fill in all required fields before submitting.');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = 'Registering...';
+
+    try {
+      // Save to Supabase
+      const res = await supaFetch('registrations', {
+        method: 'POST',
+        body: JSON.stringify({ firstname, lastname, phone,
+          email: document.getElementById('email').value.trim(),
+          state, gender, attended_before: returning, heardabout, expectation })
+      });
+
+      // Get updated total
+      const countRes = await supaFetch('registrations?select=*&order=created_at.asc');
+      const allRegs = await countRes.json();
+      const total = Array.isArray(allRegs) ? allRegs.length : '?';
+
+      animateCounter(total);
+      renderList(Array.isArray(allRegs) ? allRegs : []);
+
+      // WhatsApp notification
+      const msg = encodeURIComponent(
+        `NEW REGISTRATION: WHEN GOD SPEAKS 2026\n\n` +
+        `Name: ${firstname} ${lastname}\n` +
+        `Phone: ${phone}\n` +
+        `State: ${state}\n` +
+        `Gender: ${gender}\n` +
+        `Attended Before: ${returning}\n` +
+        `Heard About Us: ${heardabout}\n` +
+        (expectation ? `Expectation: ${expectation}\n` : '') +
+        `\nTotal Registrations: ${total}\n` +
+        `Time: ${new Date().toLocaleString()}`
+      );
+      window.open(`https://wa.me/2348147560000?text=${msg}`, '_blank');
+
+      // Show success
+      document.getElementById('successMsg').textContent =
+        `Hallelujah, ${firstname}! You are participant number ${total}. Click the button below to join the Telegram group where the program will hold. See you on Friday 15th May, 2026 at 8:00 PM!`;
+      document.getElementById('overlay').classList.add('active');
+
+      // Reset form
+      ['firstname','lastname','phone','email','expectation'].forEach(id => document.getElementById(id).value = '');
+      ['state','gender','heardabout'].forEach(id => document.getElementById(id).value = '');
+      document.querySelectorAll('input[name="returning"]').forEach(r => r.checked = false);
+
+    } catch(e) {
+      alert('Something went wrong. Please try again.');
+    }
+
+    btn.disabled = false; btn.textContent = 'Register & Get Telegram Link';
+  }
+</script>
+</body>
+</html>
