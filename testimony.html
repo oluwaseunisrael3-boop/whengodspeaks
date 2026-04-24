@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Share Your Testimony | When God Speaks 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #04112B;
+    --navy-mid: #091C45;
+    --gold: #C9960C;
+    --gold-bright: #F0C040;
+    --gold-light: #FFE080;
+    --white: #FFFFFF;
+    --text: #D0DCF0;
+    --muted: rgba(208,220,240,0.5);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Montserrat',sans-serif; background:var(--navy); color:var(--text); overflow-x:hidden; }
+
+  .bg-layer {
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(201,150,12,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,150,12,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(9,28,69,0.85) 0%, var(--navy) 100%);
+  }
+  .stars { position:fixed; inset:0; pointer-events:none; z-index:0; }
+  .star { position:absolute; background:var(--gold-light); border-radius:50%; animation:twinkle ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{opacity:0.1;transform:scale(1);} 50%{opacity:0.8;transform:scale(1.5);} }
+
+  /* HERO */
+  .hero {
+    position:relative; z-index:1;
+    text-align:center; padding:80px 20px 60px;
+    border-bottom:1px solid rgba(201,150,12,0.15);
+  }
+  .ministry-tag {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:5px; text-transform:uppercase; color:var(--gold-bright);
+    opacity:0.75; margin-bottom:16px;
+  }
+  .hero-title {
+    font-family:'Playfair Display',serif; font-size:clamp(36px,10vw,72px);
+    font-weight:900; color:var(--white); line-height:1.1; margin-bottom:8px;
+  }
+  .hero-title span {
+    display:block;
+    background:linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold-light) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .hero-divider {
+    width:100px; height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    margin:20px auto;
+  }
+  .hero-sub {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(14px,3vw,18px);
+    font-style:italic; color:var(--text); opacity:0.65; max-width:500px;
+    margin:0 auto; line-height:1.8;
+  }
+
+  /* TABS */
+  .tabs-wrap {
+    position:relative; z-index:1;
+    display:flex; justify-content:center; gap:0;
+    padding:40px 20px 0; max-width:720px; margin:0 auto;
+  }
+  .tab-btn {
+    flex:1; padding:14px 8px;
+    font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:2px; text-transform:uppercase;
+    background:rgba(255,255,255,0.03); border:1px solid rgba(201,150,12,0.18);
+    color:var(--muted); cursor:pointer; transition:all 0.3s;
+  }
+  .tab-btn:first-child { border-radius:6px 0 0 6px; }
+  .tab-btn:last-child { border-radius:0 6px 6px 0; }
+  .tab-btn.active {
+    background:linear-gradient(135deg, rgba(201,150,12,0.15), rgba(240,192,64,0.08));
+    border-color:var(--gold-bright); color:var(--gold-light);
+  }
+
+  /* SECTIONS */
+  .section { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:40px 20px 80px; display:none; }
+  .section.active { display:block; }
+
+  .sec-head { text-align:center; margin-bottom:40px; }
+  .sec-eye {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:4px; color:var(--gold); opacity:0.65;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .sec-title {
+    font-family:'Playfair Display',serif; font-size:clamp(22px,6vw,34px);
+    font-weight:900; color:var(--white); line-height:1.2;
+  }
+  .sec-rule {
+    width:60px; height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    margin:14px auto 0;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background:linear-gradient(145deg, rgba(9,28,69,0.65), rgba(4,17,43,0.9));
+    border:1px solid rgba(201,150,12,0.18); border-radius:14px;
+    padding:36px 28px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,150,12,0.07);
+  }
+  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:500px){ .form-grid{grid-template-columns:1fr;} .form-card{padding:24px 16px;} }
+  .fg { margin-bottom:16px; }
+  .fg.full { grid-column:1/-1; }
+  label {
+    display:block; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:2px; color:var(--gold-bright); text-transform:uppercase;
+    margin-bottom:8px; opacity:0.8;
+  }
+  input, select, textarea {
+    width:100%; background:rgba(255,255,255,0.04);
+    border:1px solid rgba(201,150,12,0.18); border-radius:6px;
+    padding:13px 16px; color:var(--white);
+    font-family:'Montserrat',sans-serif; font-size:14px;
+    outline:none; transition:border-color 0.3s,box-shadow 0.3s,background 0.3s;
+    -webkit-appearance:none;
+  }
+  input:focus,select:focus,textarea:focus {
+    border-color:var(--gold-bright); box-shadow:0 0 0 3px rgba(240,192,64,0.1);
+    background:rgba(240,192,64,0.03);
+  }
+  select option { background:var(--navy-mid); color:var(--white); }
+  input::placeholder,textarea::placeholder { color:rgba(208,220,240,0.25); }
+  textarea { resize:vertical; min-height:120px; }
+
+  /* STAR RATING */
+  .star-rating { display:flex; gap:8px; flex-direction:row-reverse; justify-content:flex-end; }
+  .star-rating input { display:none; }
+  .star-rating label {
+    font-size:32px; color:rgba(201,150,12,0.25);
+    cursor:pointer; transition:color 0.2s;
+    letter-spacing:0; text-transform:none; margin-bottom:0; opacity:1;
+  }
+  .star-rating input:checked ~ label,
+  .star-rating label:hover,
+  .star-rating label:hover ~ label { color:var(--gold-bright); }
+
+  .radio-row { display:flex; gap:10px; flex-wrap:wrap; }
+  .radio-opt { flex:1; min-width:100px; }
+  .radio-opt input[type="radio"] { display:none; }
+  .radio-opt label {
+    display:flex; align-items:center; justify-content:center;
+    padding:11px 8px; border:1px solid rgba(201,150,12,0.18);
+    border-radius:6px; cursor:pointer; font-size:10px;
+    transition:all 0.3s; letter-spacing:1px; margin-bottom:0;
+    text-align:center; line-height:1.3;
+  }
+  .radio-opt input[type="radio"]:checked + label {
+    background:rgba(240,192,64,0.12); border-color:var(--gold-bright); color:var(--gold-light);
+  }
+
+  .submit-btn {
+    width:100%;
+    background:linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 60%, var(--gold-light) 100%);
+    border:none; border-radius:6px; padding:18px;
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
+    letter-spacing:3px; text-transform:uppercase; color:var(--navy);
+    cursor:pointer; margin-top:10px; transition:all 0.3s;
+    box-shadow:0 8px 32px rgba(201,150,12,0.3);
+  }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 16px 48px rgba(201,150,12,0.5); }
+  .submit-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+  /* TESTIMONIES WALL */
+  .testimony-wall { display:flex; flex-direction:column; gap:16px; margin-top:32px; }
+  .testimony-card {
+    background:linear-gradient(135deg, rgba(9,28,69,0.6), rgba(4,17,43,0.8));
+    border:1px solid rgba(201,150,12,0.15); border-radius:12px;
+    padding:24px 20px; animation:fadeUp 0.5s ease both;
+  }
+  .testimony-header { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .testimony-avatar {
+    width:44px; height:44px; border-radius:50%;
+    background:linear-gradient(135deg, var(--gold), var(--gold-bright));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display',serif; font-weight:900; font-size:16px;
+    color:var(--navy); flex-shrink:0;
+  }
+  .testimony-name {
+    font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; color:var(--white);
+  }
+  .testimony-meta { font-size:11px; color:var(--muted); margin-top:2px; }
+  .testimony-stars { color:var(--gold-bright); font-size:14px; margin-bottom:10px; }
+  .testimony-text {
+    font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic;
+    color:var(--text); line-height:1.8; opacity:0.9;
+  }
+  .testimony-text::before { content:'"'; font-size:28px; color:var(--gold); line-height:0; vertical-align:-10px; margin-right:4px; }
+  .testimony-text::after { content:'"'; font-size:28px; color:var(--gold); line-height:0; vertical-align:-10px; margin-left:4px; }
+  .private-badge {
+    display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px;
+    color:var(--gold); background:rgba(201,150,12,0.08);
+    border:1px solid rgba(201,150,12,0.2); border-radius:20px;
+    padding:3px 10px; margin-top:10px;
+  }
+  .empty-state {
+    text-align:center; opacity:0.35; font-family:'Cormorant Garamond',serif;
+    font-size:15px; letter-spacing:2px; padding:48px 0;
+  }
+
+  /* OVERLAY */
+  .overlay {
+    display:none; position:fixed; inset:0;
+    background:rgba(0,0,0,0.9); z-index:1000;
+    align-items:center; justify-content:center; padding:20px;
+  }
+  .overlay.active { display:flex; }
+  .success-box {
+    background:linear-gradient(145deg, var(--navy-mid), var(--navy));
+    border:2px solid var(--gold-bright); border-radius:18px;
+    padding:52px 36px; text-align:center; max-width:420px; width:100%;
+    box-shadow:0 0 100px rgba(240,192,64,0.22);
+    animation:popIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes popIn { from{transform:scale(0.65);opacity:0;} to{transform:scale(1);opacity:1;} }
+  .success-icon { font-size:60px; margin-bottom:16px; }
+  .success-title {
+    font-family:'Playfair Display',serif; font-size:26px; font-weight:900;
+    color:var(--gold-bright); margin-bottom:14px;
+  }
+  .success-text {
+    font-family:'Montserrat',sans-serif; font-size:13px; line-height:1.8;
+    color:var(--text); opacity:0.85; margin-bottom:28px;
+  }
+  .overlay-close {
+    background:linear-gradient(135deg, var(--gold), var(--gold-bright));
+    border:none; border-radius:6px; padding:14px 36px;
+    font-family:'Montserrat',sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:2px; color:var(--navy); cursor:pointer; text-transform:uppercase;
+  }
+
+  /* FOOTER */
+  footer {
+    position:relative; z-index:1;
+    background:rgba(4,17,43,0.96); border-top:1px solid rgba(201,150,12,0.1);
+    padding:40px 20px; text-align:center;
+  }
+  .foot-logo {
+    font-family:'Playfair Display',serif; font-size:20px; font-weight:900;
+    color:var(--gold-bright); letter-spacing:3px; margin-bottom:4px;
+  }
+  .foot-min {
+    font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700;
+    letter-spacing:4px; color:var(--text); opacity:0.3;
+    text-transform:uppercase; margin-bottom:20px;
+  }
+  .foot-wa {
+    display:inline-flex; align-items:center; gap:8px;
+    background:#128C7E; color:white; text-decoration:none;
+    padding:12px 28px; border-radius:50px;
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
+    transition:all 0.3s;
+  }
+  .foot-wa:hover { background:#075E54; transform:translateY(-2px); }
+  .foot-copy {
+    font-size:10px; color:rgba(208,220,240,0.18); letter-spacing:2px;
+    margin-top:24px; font-family:'Montserrat',sans-serif; text-transform:uppercase;
+  }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="stars" id="stars"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="ministry-tag">Gozom International Ministries</p>
+  <h1 class="hero-title">When<br><span>God Speaks</span></h1>
+  <p style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold);opacity:0.7;text-transform:uppercase;margin-top:8px;">May 15 &ndash; 17, 2026</p>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Share what God did for you. Your testimony is someone else's miracle.</p>
+</section>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <button class="tab-btn active" onclick="switchTab('submit')">Share Testimony</button>
+  <button class="tab-btn" onclick="switchTab('wall')">Testimony Wall</button>
+  <button class="tab-btn" onclick="switchTab('prayer')">Prayer Requests</button>
+</div>
+
+<!-- SUBMIT TESTIMONY -->
+<div class="section active" id="tab-submit">
+  <div class="sec-head">
+    <p class="sec-eye">Post Program</p>
+    <h2 class="sec-title">Share Your Testimony & Feedback</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="form-card">
+    <div class="form-grid">
+      <div class="fg">
+        <label for="t-firstname">First Name *</label>
+        <input type="text" id="t-firstname" placeholder="Your first name" required>
+      </div>
+      <div class="fg">
+        <label for="t-lastname">Last Name *</label>
+        <input type="text" id="t-lastname" placeholder="Your last name" required>
+      </div>
+      <div class="fg">
+        <label for="t-phone">WhatsApp Number *</label>
+        <input type="tel" id="t-phone" placeholder="e.g. 08012345678" required>
+      </div>
+      <div class="fg">
+        <label for="t-state">State *</label>
+        <select id="t-state" required>
+          <option value="">Select your state</option>
+          <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option>
+          <option>Anambra</option><option>Bauchi</option><option>Bayelsa</option>
+          <option>Benue</option><option>Borno</option><option>Cross River</option>
+          <option>Delta</option><option>Ebonyi</option><option>Edo</option>
+          <option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option>
+          <option>Gombe</option><option>Imo</option><option>Jigawa</option>
+          <option>Kaduna</option><option>Kano</option><option>Katsina</option>
+          <option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+          <option>Lagos</option><option>Nasarawa</option><option>Niger</option>
+          <option>Ogun</option><option>Ondo</option><option>Osun</option>
+          <option>Oyo</option><option>Plateau</option><option>Rivers</option>
+          <option>Sokoto</option><option>Taraba</option><option>Yobe</option>
+          <option>Zamfara</option><option>Outside Nigeria</option>
+        </select>
+      </div>
+
+      <div class="fg full">
+        <label>Rate the Program *</label>
+        <div class="star-rating">
+          <input type="radio" name="rating" id="s5" value="5"><label for="s5">&#9733;</label>
+          <input type="radio" name="rating" id="s4" value="4"><label for="s4">&#9733;</label>
+          <input type="radio" name="rating" id="s3" value="3"><label for="s3">&#9733;</label>
+          <input type="radio" name="rating" id="s2" value="2"><label for="s2">&#9733;</label>
+          <input type="radio" name="rating" id="s1" value="1"><label for="s1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="fg full">
+        <label for="t-testimony">Your Testimony *</label>
+        <textarea id="t-testimony" placeholder="Share what God did for you during the program. What miracle, breakthrough, or word did you receive?..." style="min-height:150px;"></textarea>
+      </div>
+
+      <div class="fg full">
+        <label for="t-feedback">Program Feedback (Optional)</label>
+        <textarea id="t-feedback" placeholder="What did you love about the program? What can be improved?..."></textarea>
+      </div>
+
+      <div class="fg full">
+        <label>Make Your Testimony Public? *</label>
+        <div class="radio-row">
+          <div class="radio-opt">
+            <input type="radio" name="publicity" id="pub-yes" value="Public">
+            <label for="pub-yes">Yes, share publicly</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="publicity" id="pub-no" value="Private">
+            <label for="pub-no">No, keep it private</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="submit-btn" id="testimonyBtn" onclick="submitTestimony()">Submit My Testimony</button>
+  </div>
+</div>
+
+<!-- TESTIMONY WALL -->
+<div class="section" id="tab-wall">
+  <div class="sec-head">
+    <p class="sec-eye">What God Did</p>
+    <h2 class="sec-title">Testimony Wall</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="testimony-wall" id="testimonyWall">
+    <p class="empty-state">No public testimonies yet. Be the first to share!</p>
+  </div>
+</div>
+
+<!-- PRAYER REQUESTS -->
+<div class="section" id="tab-prayer">
+  <div class="sec-head">
+    <p class="sec-eye">We Are Standing With You</p>
+    <h2 class="sec-title">Submit a Prayer Request</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="form-card">
+    <div class="form-grid">
+      <div class="fg">
+        <label for="p-firstname">First Name *</label>
+        <input type="text" id="p-firstname" placeholder="Your first name" required>
+      </div>
+      <div class="fg">
+        <label for="p-phone">WhatsApp Number *</label>
+        <input type="tel" id="p-phone" placeholder="e.g. 08012345678" required>
+      </div>
+      <div class="fg full">
+        <label for="p-category">Prayer Category *</label>
+        <select id="p-category" required>
+          <option value="">Select category</option>
+          <option>Healing and Health</option>
+          <option>Financial Breakthrough</option>
+          <option>Marriage and Relationships</option>
+          <option>Career and Business</option>
+          <option>Children and Family</option>
+          <option>Spiritual Growth</option>
+          <option>Salvation of a Loved One</option>
+          <option>Deliverance</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg full">
+        <label for="p-request">Your Prayer Request *</label>
+        <textarea id="p-request" placeholder="Share your prayer request. Apostle Oluwaseun Israel will personally pray over every request submitted here..." style="min-height:150px;"></textarea>
+      </div>
+      <div class="fg full">
+        <label>How Urgent Is This Request? *</label>
+        <div class="radio-row">
+          <div class="radio-opt">
+            <input type="radio" name="urgency" id="urg-high" value="Very Urgent">
+            <label for="urg-high">Very Urgent</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="urgency" id="urg-med" value="Moderate">
+            <label for="urg-med">Moderate</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="urgency" id="urg-low" value="Standing Belief">
+            <label for="urg-low">Standing in Faith</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="submit-btn" id="prayerBtn" onclick="submitPrayer()">Submit Prayer Request</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">GOZOM</div>
+  <p class="foot-min">International Ministries</p>
+  <a href="https://wa.me/2348147560000?text=Hello%20Apostle%2C%20I%20want%20to%20share%20something%20from%20the%20When%20God%20Speaks%20program"
+     class="foot-wa" target="_blank">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    Contact Apostle on WhatsApp
+  </a>
+  <p class="foot-copy">When God Speaks 2026 &bull; Gozom International Ministries</p>
+</footer>
+
+<!-- SUCCESS OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="success-box">
+    <div class="success-icon" id="overlayIcon">🙌</div>
+    <h2 class="success-title" id="overlayTitle">Thank You!</h2>
+    <p class="success-text" id="overlayMsg">Your submission has been received.</p>
+    <button class="overlay-close" onclick="document.getElementById('overlay').classList.remove('active')">Amen!</button>
+  </div>
+</div>
+
+<script>
+  // Stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s;`;
+    starsEl.appendChild(s);
+  }
+
+  // Supabase config
+  const SUPA_URL = 'https://oejusnucofijyxkkblcy.supabase.co';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9lanVzbnVjb2Zpanl4a2tibGN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NzM1ODIsImV4cCI6MjA5MjU0OTU4Mn0.V5C4J2JMVadq1ZtoR1v0-7Y65MzLwiCiSOxe89radDg';
+
+  async function supaFetch(path, options = {}) {
+    const res = await fetch(`${SUPA_URL}/rest/v1/${path}`, {
+      headers: {
+        'apikey': SUPA_KEY,
+        'Authorization': `Bearer ${SUPA_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation',
+        ...options.headers
+      },
+      ...options
+    });
+    return res;
+  }
+
+  // Tab switching
+  function switchTab(tab) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.target.classList.add('active');
+    if (tab === 'wall') loadTestimonies();
+  }
+
+  // Show overlay
+  function showOverlay(icon, title, msg) {
+    document.getElementById('overlayIcon').textContent = icon;
+    document.getElementById('overlayTitle').textContent = title;
+    document.getElementById('overlayMsg').textContent = msg;
+    document.getElementById('overlay').classList.add('active');
+  }
+
+  // Load public testimonies
+  async function loadTestimonies() {
+    const wall = document.getElementById('testimonyWall');
+    wall.innerHTML = '<p class="empty-state">Loading testimonies...</p>';
+    try {
+      const res = await supaFetch('testimonies?select=*&publicity=eq.Public&order=created_at.desc');
+      const data = await res.json();
+      const pub = Array.isArray(data) ? data.filter(t => t.publicity === 'Public') : [];
+      if (!pub.length) {
+        wall.innerHTML = '<p class="empty-state">No public testimonies yet. Be the first to share!</p>';
+        return;
+      }
+      wall.innerHTML = pub.map(t => {
+        const init = ((t.firstname||'')[0]||'') + ((t.lastname||'')[0]||'');
+        const stars = '★'.repeat(parseInt(t.rating)||5) + '☆'.repeat(5-(parseInt(t.rating)||5));
+        return `<div class="testimony-card">
+          <div class="testimony-header">
+            <div class="testimony-avatar">${init.toUpperCase()}</div>
+            <div>
+              <div class="testimony-name">${t.firstname} ${t.lastname}</div>
+              <div class="testimony-meta">${t.state}</div>
+            </div>
+          </div>
+          <div class="testimony-stars">${stars}</div>
+          <div class="testimony-text">${t.testimony}</div>
+        </div>`;
+      }).join('');
+    } catch(e) {
+      wall.innerHTML = '<p class="empty-state">Could not load testimonies. Please try again.</p>';
+    }
+  }
+
+  // Submit testimony
+  async function submitTestimony() {
+    const firstname = document.getElementById('t-firstname').value.trim();
+    const lastname = document.getElementById('t-lastname').value.trim();
+    const phone = document.getElementById('t-phone').value.trim();
+    const state = document.getElementById('t-state').value;
+    const rating = document.querySelector('input[name="rating"]:checked')?.value || '';
+    const testimony = document.getElementById('t-testimony').value.trim();
+    const feedback = document.getElementById('t-feedback').value.trim();
+    const publicity = document.querySelector('input[name="publicity"]:checked')?.value || '';
+
+    if (!firstname || !lastname || !phone || !state || !rating || !testimony || !publicity) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const btn = document.getElementById('testimonyBtn');
+    btn.disabled = true; btn.textContent = 'Submitting...';
+
+    try {
+      await supaFetch('testimonies', {
+        method: 'POST',
+        body: JSON.stringify({ firstname, lastname, phone, state, rating, testimony, feedback, publicity })
+      });
+
+      // WhatsApp notification
+      const msg = encodeURIComponent(
+        `NEW TESTIMONY: WHEN GOD SPEAKS 2026\n\n` +
+        `Name: ${firstname} ${lastname}\n` +
+        `Phone: ${phone}\n` +
+        `State: ${state}\n` +
+        `Rating: ${rating} Stars\n` +
+        `Visibility: ${publicity}\n\n` +
+        `TESTIMONY:\n${testimony}\n\n` +
+        (feedback ? `FEEDBACK:\n${feedback}` : '') +
+        `\nTime: ${new Date().toLocaleString()}`
+      );
+      window.open(`https://wa.me/2348147560000?text=${msg}`, '_blank');
+
+      showOverlay('🙌', 'Glory to God!', `Thank you ${firstname}! Your testimony has been received. ${publicity === 'Public' ? 'It will appear on the Testimony Wall for others to be blessed.' : 'Your testimony is kept private as requested.'}`);
+
+      ['t-firstname','t-lastname','t-phone','t-feedback','t-testimony'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('t-state').value = '';
+      document.querySelectorAll('input[name="rating"], input[name="publicity"]').forEach(r => r.checked = false);
+
+    } catch(e) {
+      alert('Something went wrong. Please try again.');
+    }
+    btn.disabled = false; btn.textContent = 'Submit My Testimony';
+  }
+
+  // Submit prayer request
+  async function submitPrayer() {
+    const firstname = document.getElementById('p-firstname').value.trim();
+    const phone = document.getElementById('p-phone').value.trim();
+    const category = document.getElementById('p-category').value;
+    const request = document.getElementById('p-request').value.trim();
+    const urgency = document.querySelector('input[name="urgency"]:checked')?.value || '';
+
+    if (!firstname || !phone || !category || !request || !urgency) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const btn = document.getElementById('prayerBtn');
+    btn.disabled = true; btn.textContent = 'Submitting...';
+
+    try {
+      await supaFetch('prayer_requests', {
+        method: 'POST',
+        body: JSON.stringify({ firstname, phone, category, request, urgency })
+      });
+
+      // WhatsApp notification
+      const msg = encodeURIComponent(
+        `NEW PRAYER REQUEST: WHEN GOD SPEAKS 2026\n\n` +
+        `Name: ${firstname}\n` +
+        `Phone: ${phone}\n` +
+        `Category: ${category}\n` +
+        `Urgency: ${urgency}\n\n` +
+        `REQUEST:\n${request}\n\n` +
+        `Time: ${new Date().toLocaleString()}`
+      );
+      window.open(`https://wa.me/2348147560000?text=${msg}`, '_blank');
+
+      showOverlay('🙏', 'Prayer Request Received!', `Thank you ${firstname}. Apostle Oluwaseun Israel will personally pray over your request. Heaven is already working on your behalf!`);
+
+      ['p-firstname','p-phone','p-request'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('p-category').value = '';
+      document.querySelectorAll('input[name="urgency"]').forEach(r => r.checked = false);
+
+    } catch(e) {
+      alert('Something went wrong. Please try again.');
+    }
+    btn.disabled = false; btn.textContent = 'Submit Prayer Request';
+  }
+</script>
+</body>
+</html>
