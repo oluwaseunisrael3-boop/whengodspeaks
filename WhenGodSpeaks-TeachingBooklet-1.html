@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When God Speaks | 3-Day Teaching Booklet</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+ --black:#050508; --dark:#0D0D15; --card:#12121E; --border:rgba(255,255,255,0.07);
+ --white:#FFFFFF; --cream:#F0E8D5; --muted:rgba(240,232,213,0.5);
+ --d1:#C97DFF; --d1-dark:#1a0533; --d1-mid:rgba(201,125,255,0.12);
+ --d2:#00E5CC; --d2-dark:#003333; --d2-mid:rgba(0,229,204,0.12);
+ --d3:#FF6B35; --d3-dark:#330000; --d3-mid:rgba(255,107,53,0.12);
+ --gold:#C9960C; --gold-bright:#F0C040;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;background:var(--black);color:var(--cream);overflow-x:hidden;}
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px;overflow:hidden;background:radial-gradient(ellipse at 30% 20%,rgba(201,125,255,0.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(255,107,53,0.1) 0%,transparent 50%),var(--black);}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold-bright);opacity:0.8;margin-bottom:24px;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold-bright);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);}}
+.hero-label{font-family:'Cinzel',serif;font-size:clamp(12px,3vw,18px);font-weight:400;letter-spacing:8px;color:var(--muted);text-transform:uppercase;margin-bottom:16px;}
+.hero-main{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,14vw,110px);font-weight:700;line-height:0.95;color:var(--white);margin-bottom:8px;}
+.hero-main span{display:block;background:linear-gradient(135deg,var(--d1) 0%,var(--d2) 50%,var(--d3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,3vw,24px);font-style:italic;color:var(--muted);margin-top:16px;margin-bottom:36px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.pill{font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);border-radius:40px;padding:8px 18px;color:var(--muted);}
+.day-nav{position:sticky;top:0;z-index:100;background:rgba(5,5,8,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.day-nav-inner{max-width:900px;margin:0 auto;display:flex;}
+.day-nav-btn{flex:1;padding:16px 6px;font-family:'Cinzel',serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(240,232,213,0.35);cursor:pointer;transition:all 0.3s;}
+.day-nav-btn.d1.active{color:var(--d1);border-bottom-color:var(--d1);}
+.day-nav-btn.d2.active{color:var(--d2);border-bottom-color:var(--d2);}
+.day-nav-btn.d3.active{color:var(--d3);border-bottom-color:var(--d3);}
+.main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 20px 80px;}
+.day-section{display:none;padding-top:50px;}
+.day-section.active{display:block;animation:fadeIn 0.5s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.day-header{text-align:center;margin-bottom:40px;padding:50px 20px;border-radius:16px;position:relative;overflow:hidden;}
+.day-header.d1{background:linear-gradient(135deg,var(--d1-dark),#000);border:1px solid rgba(201,125,255,0.2);}
+.day-header.d2{background:linear-gradient(135deg,var(--d2-dark),#000);border:1px solid rgba(0,229,204,0.2);}
+.day-header.d3{background:linear-gradient(135deg,var(--d3-dark),#000);border:1px solid rgba(255,107,53,0.2);}
+.day-num{font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;margin-bottom:12px;}
+.d1 .day-num{color:var(--d1);} .d2 .day-num{color:var(--d2);} .d3 .day-num{color:var(--d3);}
+.day-name{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,9vw,64px);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:10px;}
+.day-theme{font-family:'Cinzel',serif;font-size:clamp(14px,4vw,22px);font-weight:900;letter-spacing:4px;text-transform:uppercase;}
+.d1 .day-theme{color:var(--d1);} .d2 .day-theme{color:var(--d2);} .d3 .day-theme{color:var(--d3);}
+.day-tagline{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--muted);margin-top:10px;}
+.sec-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:40px;}
+@media(max-width:480px){.sec-btns{grid-template-columns:1fr;}}
+.sec-btn{padding:18px 10px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;text-align:center;transition:all 0.3s;}
+.d1 .sec-btn.active{border-color:rgba(201,125,255,0.5);background:var(--d1-mid);}
+.d2 .sec-btn.active{border-color:rgba(0,229,204,0.5);background:var(--d2-mid);}
+.d3 .sec-btn.active{border-color:rgba(255,107,53,0.5);background:var(--d3-mid);}
+.sec-btn-icon{font-size:26px;margin-bottom:6px;display:block;}
+.sec-btn-label{font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;display:block;}
+.d1 .sec-btn.active .sec-btn-label{color:var(--d1);}
+.d2 .sec-btn.active .sec-btn-label{color:var(--d2);}
+.d3 .sec-btn.active .sec-btn-label{color:var(--d3);}
+.sec-btn-sub{font-family:'Lato',sans-serif;font-size:10px;color:var(--muted);display:block;margin-top:3px;}
+.panel{display:none;animation:fadeIn 0.4s ease;}
+.panel.active{display:block;}
+.flow-card{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden;margin-bottom:16px;}
+.flow-head{padding:18px 22px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+.flow-title{font-family:'Cinzel',serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.d1 .flow-title{color:var(--d1);} .d2 .flow-title{color:var(--d2);} .d3 .flow-title{color:var(--d3);}
+.flow-body{padding:22px;}
+.flow-text{font-family:'Lato',sans-serif;font-size:15px;line-height:1.9;color:var(--cream);white-space:pre-line;}
+.decl{border-radius:10px;padding:18px;margin:14px 0;border-left:3px solid;}
+.d1 .decl{border-color:var(--d1);background:rgba(201,125,255,0.07);}
+.d2 .decl{border-color:var(--d2);background:rgba(0,229,204,0.07);}
+.d3 .decl{border-color:var(--d3);background:rgba(255,107,53,0.07);}
+.decl p{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;line-height:1.9;color:var(--white);}
+.tp{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;margin-bottom:12px;}
+.tp-head{padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background 0.3s;user-select:none;}
+.tp-head:hover{background:rgba(255,255,255,0.03);}
+.pnum{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:12px;font-weight:700;flex-shrink:0;}
+.d1 .pnum{background:var(--d1-mid);color:var(--d1);border:1px solid rgba(201,125,255,0.3);}
+.d2 .pnum{background:var(--d2-mid);color:var(--d2);border:1px solid rgba(0,229,204,0.3);}
+.d3 .pnum{background:var(--d3-mid);color:var(--d3);border:1px solid rgba(255,107,53,0.3);}
+.ptitle{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:1px;color:var(--white);flex:1;}
+.parrow{font-size:14px;color:var(--muted);transition:transform 0.3s;}
+.parrow.open{transform:rotate(180deg);}
+.pbody{padding:0 20px;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
+.pbody.open{max-height:800px;padding:0 20px 20px;}
+.ptext{font-family:'Lato',sans-serif;font-size:14px;line-height:1.9;color:var(--muted);padding-top:14px;border-top:1px solid var(--border);}
+.scr{background:rgba(255,255,255,0.03);border-radius:10px;padding:16px 18px;margin:12px 0;position:relative;padding-left:22px;}
+.scr::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
+.d1 .scr::before{background:var(--d1);} .d2 .scr::before{background:var(--d2);} .d3 .scr::before{background:var(--d3);}
+.scr-ref{font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:2px;display:block;margin-bottom:6px;}
+.d1 .scr-ref{color:var(--d1);} .d2 .scr-ref{color:var(--d2);} .d3 .scr-ref{color:var(--d3);}
+.scr-txt{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--cream);line-height:1.7;}
+.iq{text-align:center;padding:24px 20px;margin:16px 0;}
+.iq p{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,4vw,23px);font-style:italic;font-weight:600;color:var(--white);line-height:1.6;}
+.pr-card{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden;}
+.pr-head{padding:26px;text-align:center;border-bottom:1px solid var(--border);}
+.pr-icon{font-size:44px;margin-bottom:10px;display:block;}
+.pr-title{font-family:'Cinzel',serif;font-size:16px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:4px;}
+.pr-sub{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--muted);}
+.pr-body{padding:26px;}
+.pr-st{font-family:'Cinzel',serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;margin-top:20px;display:block;}
+.pr-st:first-child{margin-top:0;}
+.d1 .pr-st{color:var(--d1);} .d2 .pr-st{color:var(--d2);} .d3 .pr-st{color:var(--d3);}
+.pr-txt{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;line-height:2.0;color:var(--cream);white-space:pre-line;}
+.pr-decl{background:rgba(255,255,255,0.04);border-radius:10px;padding:18px 22px;margin-top:16px;}
+.pr-decl p{font-family:'Lato',sans-serif;font-size:14px;line-height:2.1;color:var(--cream);}
+.pr-key{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:600;color:var(--white);text-align:center;padding:18px;border-radius:10px;margin-top:18px;border:1px solid rgba(255,255,255,0.08);}
+.d1 .pr-key{background:var(--d1-mid);} .d2 .pr-key{background:var(--d2-mid);} .d3 .pr-key{background:var(--d3-mid);}
+footer{position:relative;z-index:1;background:rgba(5,5,8,0.98);border-top:1px solid var(--border);padding:40px 20px;text-align:center;}
+.f-logo{font-family:'Cinzel',serif;font-size:20px;font-weight:900;letter-spacing:4px;color:var(--white);margin-bottom:4px;}
+.f-sub{font-family:'Lato',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:18px;}
+.f-wa{display:inline-flex;align-items:center;gap:8px;background:#128C7E;color:white;text-decoration:none;padding:11px 26px;border-radius:50px;font-family:'Lato',sans-serif;font-size:13px;font-weight:700;transition:all 0.3s;}
+.f-wa:hover{background:#075E54;transform:translateY(-2px);}
+.f-copy{font-size:10px;color:rgba(240,232,213,0.15);letter-spacing:2px;margin-top:20px;font-family:'Lato',sans-serif;text-transform:uppercase;}
+</style>
+</head>
+<body>
+<section class="hero">
+ <div class="badge"><span class="badge-dot"></span>Gozom International Ministries<span class="badge-dot"></span></div>
+ <p class="hero-label">3 Days Prophetic Online Program</p>
+ <h1 class="hero-main">When<span>God Speaks</span></h1>
+ <p class="hero-sub">Clarity &bull; Alignment &bull; Manifestation</p>
+ <div class="hero-pills">
+ <span class="pill">May 15 17, 2026</span>
+ <span class="pill">8:00 PM Nightly</span>
+ <span class="pill">Via Telegram</span>
+ <span class="pill">Apostle Oluwaseun Israel</span>
+ </div>
+</section>
+<nav class="day-nav">
+ <div class="day-nav-inner">
+ <button class="day-nav-btn d1 active" onclick="switchDay(1,this)">Day 1 Clarity</button>
+ <button class="day-nav-btn d2" onclick="switchDay(2,this)">Day 2 Alignment</button>
+ <button class="day-nav-btn d3" onclick="switchDay(3,this)">Day 3 Manifestation</button>
+ </div>
+</nav>
+<main class="main">
+
+<! DAY 1 >
+<div class="day-section d1 active" id="day1">
+ <div class="day-header d1">
+ <p class="day-num">Night One &bull; Friday 15th May, 2026</p>
+ <h2 class="day-name">When God Speaks</h2>
+ <p class="day-theme">Clarity</p>
+ <p class="day-tagline">"There is nothing as dangerous as being sincere but not accurate."</p>
+ </div>
+ <div class="sec-btns d1">
+ <button class="sec-btn active" onclick="switchSec('d1','flow',this)"><span class="sec-btn-icon">🔥</span><span class="sec-btn-label">Prophetic Flow</span><span class="sec-btn-sub">Live Session Script</span></button>
+ <button class="sec-btn" onclick="switchSec('d1','teach',this)"><span class="sec-btn-icon">📖</span><span class="sec-btn-label">Teaching</span><span class="sec-btn-sub">Full Sermon Notes</span></button>
+ <button class="sec-btn" onclick="switchSec('d1','pray',this)"><span class="sec-btn-icon">🙏</span><span class="sec-btn-label">Prayer</span><span class="sec-btn-sub">Declarations &amp; Prayer</span></button>
+ </div>
+ <! D1 FLOW >
+ <div class="panel active" id="d1-flow">
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Opening Charge</span></div><div class="flow-body"><p class="flow-text">Beloved, welcome to this divine encounter… WHEN GOD SPEAKS.
+
+Tonight is not ordinary. This is not a gathering of men… this is a meeting with God.
+
+There are moments when God decides to step into the affairs of men and speak… And when He speaks, everything changes.
+
+I want you to position yourself right now. Shut down distractions. Focus your spirit. Stay expectant.
+
+Because tonight… God will speak into your life.</p></div></div>
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Activation Prayer</span></div><div class="flow-body"><p class="flow-text">Lift your voice wherever you are and begin to pray:</p><div class="decl d1"><p>"Lord, I am ready… speak into my life tonight."
+
+Pray it with hunger… pray it with expectation… Because God responds to prepared hearts.</p></div></div></div>
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Prophetic Exhortation</span></div><div class="flow-body"><p class="flow-text">Hear this…
+
+Many are busy, but few are hearing.
+Many are active, but few are aligned.
+
+It is not activity that changes destiny… it is divine instruction.
+
+One word from God can end years of struggle.
+One instruction can position you where effort could not take you.
+
+Tonight, God will not just speak generally… He will speak specifically.</p></div></div>
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Prophetic Declarations</span></div><div class="flow-body"><div class="decl d1"><p>Every voice of confusion in your life is silenced!
+
+Every spiritual blockage affecting your hearing be removed now!
+
+Receive clarity in your spirit!
+Receive divine direction!
+
+What you need to know, you will know tonight!
+
+Your ears are open. Your heart is ready.</p></div></div></div>
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Word Ministration Flow</span></div><div class="flow-body"><p class="flow-text">As the Word begins to come, speak with authority:
+
+There are people here… you have been at a crossroad… You don't know what next to do…
+
+But I hear the Lord say: "I am bringing clarity."
+
+Some of you have been experiencing delay… But I hear the Lord say: "Speed is coming."
+
+This is a season where God will give you instructions that will look simple… But will produce extraordinary results.
+
+Don't ignore the little instructions… Because your next level is hidden in them.</p></div></div>
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Prophetic Moment</span></div><div class="flow-body"><p class="flow-text">Right now… begin to pray in the spirit if you can…
+
+Something is shifting…
+
+I sense strongly… chains are breaking… Confusion is clearing… Light is breaking forth…
+
+Receive it now!</p></div></div>
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Direct Prophetic Release</span></div><div class="flow-body"><div class="decl d1"><p>Every area where you have been stuck… MOVE FORWARD!
+
+Every delayed answer… RECEIVE SPEED NOW!
+
+Every closed door… OPEN NOW!
+
+From tonight, you will not walk in confusion again!
+You will hear God clearly!
+You will walk in accuracy!
+Your life will show evidence that God has spoken!</p></div></div></div>
+ <div class="flow-card d1"><div class="flow-head"><span>🔥</span><span class="flow-title">Closing Charge</span></div><div class="flow-body"><p class="flow-text">Hear this as we close…
+
+God has spoken… now your responsibility is obedience.
+
+Guard the word. Act on it. Stay aligned.
+
+And don't miss any of the remaining sessions… Because what is coming next is deeper.</p></div></div>
+ </div>
+ <! D1 TEACHING >
+ <div class="panel" id="d1-teach">
+ <div class="scr d1"><span class="scr-ref">Scripture Focus: Habakkuk 2:1-2 | John 10:27 | Job 33:14</span><p class="scr-txt">"Write the vision, and make it plain…" &bull; "My sheep hear my voice…" &bull; "For God speaketh once, yea twice…"</p></div>
+ <div class="iq"><p>Beloved, one of the greatest deceptions in the body of Christ is the belief that God is not speaking. God is always speaking… the challenge is clarity of perception.</p></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d1">1</span><span class="ptitle">God Speaks Consistently, Not Occasionally</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d1"><span class="scr-ref">Job 33:14</span><p class="scr-txt">God speaketh once, yea twice, yet man perceiveth it not.</p></div><p class="ptext">God is not silent… Man is distracted. Many are waiting for a loud voice… But God often speaks through impressions, convictions, scriptures, and inner witness. God speaks consistently. The challenge is our perception, not His communication.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d1">2</span><span class="ptitle">Clarity Is a Function of Relationship</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d1"><span class="scr-ref">John 10:27</span><p class="scr-txt">My sheep hear my voice, and I know them, and they follow me.</p></div><p class="ptext">It is not "my workers" or "my members"… It is my sheep. Clarity comes from intimacy. The closer you are to God, the clearer His voice becomes. You cannot hear clearly someone you barely know.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d1">3</span><span class="ptitle">Clarity Requires Stillness and Positioning</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d1"><span class="scr-ref">Habakkuk 2:1</span><p class="scr-txt">I will stand upon my watch, and set me upon the tower, and will watch to see what he will say unto me.</p></div><p class="ptext">You don't hear God in noise. You hear Him in intentional stillness. Many are too busy to hear God. Positioning is a discipline, not an accident.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d1">4</span><span class="ptitle">God's Voice Brings Peace, Not Confusion</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d1"><span class="scr-ref">1 Corinthians 14:33</span><p class="scr-txt">For God is not the author of confusion, but of peace.</p></div><p class="ptext">When God speaks, even if the instruction is difficult… There is a witness of peace. If there is confusion, check the source. The voice of God always aligns with His nature.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d1">5</span><span class="ptitle">Enemies of Clarity and How to Overcome Them</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d1"><span class="scr-ref">1 Kings 19:12</span><p class="scr-txt">And after the earthquake a fire; but the Lord was not in the fire: and after the fire a still small voice.</p></div><p class="ptext">Enemies of clarity: Noise, fear, unconfessed sin, emotional attachment, busy schedules.
+
+How to grow in clarity:
+1. Stay in the Word it trains your spirit to recognise His voice
+2. Practice stillness create space for God to speak
+3. Obey small instructions faithfulness in little unlocks more
+4. Pray in the Spirit your spirit connects with His Spirit
+
+Clarity is not a gift for a few. It is an inheritance for all who pursue it.</p></div></div>
+ <div class="iq"><p>"Clarity is your inheritance. From today: slow down, listen more, stay sensitive. Because one clear word from God is worth more than a thousand human strategies."</p></div>
+ </div>
+ <! D1 PRAYER >
+ <div class="panel" id="d1-pray">
+ <div class="pr-card d1">
+ <div class="pr-head"><span class="pr-icon">🙏</span><p class="pr-title">Day 1 Prayers &amp; Declarations</p><p class="pr-sub">Clarity Opening Your Spiritual Ears</p></div>
+ <div class="pr-body d1">
+ <span class="pr-st">Opening Prayer</span>
+ <p class="pr-txt">Father, in the name of Jesus, open the ears of every person gathered on this platform tonight. Let the frequency of heaven become audible to every spirit.
+
+Let no one leave the same way they came. The God who spoke and creation obeyed is speaking tonight.
+
+Let every ear be tuned, every heart be opened, and every spirit be positioned to receive. In Jesus name. Amen.</p>
+ <span class="pr-st">Prophetic Declarations</span>
+ <div class="pr-decl"><p>Every voice of confusion in my life be silenced now!
+
+Every spiritual blockage affecting my hearing be removed in Jesus name!
+
+I receive clarity in my spirit!
+I receive divine direction!
+
+My ears are open. My heart is ready.
+I will hear God clearly from this day forward.
+
+What I need to know, I will know.
+I will not miss my timing.
+I will not make wrong decisions.
+
+Clarity is my portion in Jesus name!</p></div>
+ <span class="pr-st">Personal Prayer Focus</span>
+ <p class="pr-txt">Lord, open my ears.
+Let me hear You clearly.
+Remove every distraction that clouds my perception.
+Remove every sin that dulls my sensitivity.
+
+I commit to stillness.
+I commit to obedience.
+I commit to sensitivity.
+
+Speak, Lord. Your servant is listening.
+
+In Jesus name. Amen.</p>
+ <div class="pr-key d1">"Lord, open my ears. Let me hear You clearly. From today, I walk in clarity."</div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<! DAY 2 >
+<div class="day-section d2" id="day2">
+ <div class="day-header d2">
+ <p class="day-num">Night Two &bull; Saturday 16th May, 2026</p>
+ <h2 class="day-name">When God Speaks</h2>
+ <p class="day-theme">Alignment</p>
+ <p class="day-tagline">"It is possible to hear God and still miss destiny."</p>
+ </div>
+ <div class="sec-btns d2">
+ <button class="sec-btn active" onclick="switchSec('d2','flow',this)"><span class="sec-btn-icon">🔥</span><span class="sec-btn-label">Prophetic Flow</span><span class="sec-btn-sub">Live Session Script</span></button>
+ <button class="sec-btn" onclick="switchSec('d2','teach',this)"><span class="sec-btn-icon">📖</span><span class="sec-btn-label">Teaching</span><span class="sec-btn-sub">Full Sermon Notes</span></button>
+ <button class="sec-btn" onclick="switchSec('d2','pray',this)"><span class="sec-btn-icon">🙏</span><span class="sec-btn-label">Prayer</span><span class="sec-btn-sub">Declarations &amp; Prayer</span></button>
+ </div>
+ <! D2 FLOW >
+ <div class="panel active" id="d2-flow">
+ <div class="flow-card d2"><div class="flow-head"><span>🔥</span><span class="flow-title">Opening Charge</span></div><div class="flow-body"><p class="flow-text">Beloved, welcome to Day 2 of this prophetic encounter.
+
+Yesterday, God began something… but tonight, He will go deeper.
+
+Day 1 was about opening and clarity… But tonight is about alignment and breaking limitations.
+
+Because it is one thing to hear God… It is another thing to be aligned with what He is saying.
+
+Tonight, God will correct, reposition, and realign destinies.</p></div></div>
+ <div class="flow-card d2"><div class="flow-head"><span>🔥</span><span class="flow-title">Activation Prayer</span></div><div class="flow-body"><div class="decl d2"><p>"Lord, align me with Your will… remove everything that is not of You."
+
+Pray it with sincerity… Because alignment is what produces results.</p></div></div></div>
+ <div class="flow-card d2"><div class="flow-head"><span>🔥</span><span class="flow-title">Prophetic Exhortation</span></div><div class="flow-body"><p class="flow-text">Hear this mystery…
+
+Many people hear God… but still struggle. Why?
+
+Because they are hearing… but not aligned.
+
+Wrong relationships can block destiny.
+Wrong decisions can delay seasons.
+
+But when alignment happens… Speed becomes inevitable.
+
+Tonight, God will realign lives.</p></div></div>
+ <div class="flow-card d2"><div class="flow-head"><span>🔥</span><span class="flow-title">Breaking Limitations</span></div><div class="flow-body"><div class="decl d2"><p>Every limitation placed over your life BREAK NOW!
+
+Every invisible barrier holding you back CATCH FIRE!
+
+Every wrong alignment be broken now!
+
+Receive divine positioning!
+Receive divine correction!
+
+You are stepping into your rightful place!</p></div></div></div>
+ <div class="flow-card d2"><div class="flow-head"><span>🔥</span><span class="flow-title">Word Ministration Flow</span></div><div class="flow-body"><p class="flow-text">There are people here…
+
+You have been trying, but things are not working… Not because you are not doing something… But because something is out of alignment.
+
+I hear the Lord say: "I am bringing order."
+
+Some of you will receive instructions that will require boldness… Obey quickly. Because delayed obedience can delay destiny.
+
+Tonight, God will show you what to stop… What to start… And what to continue.</p></div></div>
+ <div class="flow-card d2"><div class="flow-head"><span>🔥</span><span class="flow-title">Direct Prophetic Release</span></div><div class="flow-body"><div class="decl d2"><p>Every wrong connection affecting your destiny be cut off now!
+
+Every step you have taken out of alignment receive correction now!
+
+You will not walk in error!
+You will not miss your timing!
+
+Receive divine speed!
+Receive divine accuracy!
+
+From tonight, your life begins to move forward with clarity and power!</p></div></div></div>
+ <div class="flow-card d2"><div class="flow-head"><span>🔥</span><span class="flow-title">Closing Charge</span></div><div class="flow-body"><p class="flow-text">Hear this…
+
+Tonight was alignment… but tomorrow is manifestation.
+
+As God begins to speak to you, don't argue… don't delay… Act.
+
+Your obedience in this season will determine your next level.</p></div></div>
+ </div>
+ <! D2 TEACHING >
+ <div class="panel" id="d2-teach">
+ <div class="scr d2"><span class="scr-ref">Scripture Focus: Amos 3:3 | Proverbs 3:5-6 | Romans 12:2</span><p class="scr-txt">"Can two walk together, except they be agreed?"</p></div>
+ <div class="iq"><p>Alignment is one of the most powerful mysteries in destiny. You can hear God… but if you are not aligned, you will not see results.</p></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d2">1</span><span class="ptitle">Alignment Is Agreement With God's Will</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d2"><span class="scr-ref">Amos 3:3</span><p class="scr-txt">Can two walk together, except they be agreed?</p></div><p class="ptext">Alignment means your thoughts, decisions, and actions are in agreement with God. It is not partial obedience… It is total submission. Many people want God's results while walking in their own direction. That is a contradiction.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d2">2</span><span class="ptitle">Misalignment Is the Root of Struggle</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d2"><span class="scr-ref">Proverbs 3:5-6</span><p class="scr-txt">Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.</p></div><p class="ptext">Many struggles in life are not from the devil… They are from misalignment. When you move outside God's instruction, you step outside His backing. Jonah heard God but went the wrong direction. The storm that followed was divine correction, not punishment.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d2">3</span><span class="ptitle">Alignment Requires Transformation</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d2"><span class="scr-ref">Romans 12:2</span><p class="scr-txt">Be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.</p></div><p class="ptext">Alignment is not automatic. Your mind must be renewed to think like God. Your desires must be purified to match His will. You cannot align your life with God while your thinking remains worldly. Transformation is the doorway to alignment.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d2">4</span><span class="ptitle">Alignment Demands Sacrifice</span><span class="parrow">▼</span></div><div class="pbody"><p class="ptext">Sometimes God will ask you to let go… To walk away… To change direction…
+
+Alignment is not convenient… but it is powerful.
+
+The cost of alignment is temporary. The reward of alignment is eternal.
+
+What God will ask you to release is always smaller than what He is preparing to give you.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d2">5</span><span class="ptitle">Three Dimensions of Alignment</span><span class="parrow">▼</span></div><div class="pbody"><p class="ptext">Spiritual Alignment Are your spiritual practices in order? Prayer, Word, fellowship?
+
+Mental Alignment Are your thoughts in agreement with God's truth? Or are you meditating on fear, doubt, and limitation?
+
+Practical Alignment Are your decisions, relationships, and pursuits aligned with God's instruction for this season?
+
+Check all three. Misalignment in any one area can stall the whole life.</p></div></div>
+ <div class="iq"><p>"Alignment produces speed. When you are in the right position, God moves on your behalf without you having to force anything."</p></div>
+ </div>
+ <! D2 PRAYER >
+ <div class="panel" id="d2-pray">
+ <div class="pr-card d2">
+ <div class="pr-head"><span class="pr-icon">🙏</span><p class="pr-title">Day 2 Prayers &amp; Declarations</p><p class="pr-sub">Alignment Coming Into Agreement With God</p></div>
+ <div class="pr-body d2">
+ <span class="pr-st">Opening Prayer</span>
+ <p class="pr-txt">Father, in the name of Jesus, let every life here come into alignment with Your will.
+
+Let every wrong alignment be broken. Let every wrong connection be severed.
+
+Tonight, Lord, correct, reposition, and realign destinies.
+
+Let there be speed, order, and manifestation. In Jesus name. Amen.</p>
+ <span class="pr-st">Prophetic Declarations</span>
+ <div class="pr-decl"><p>Every wrong alignment in my life BREAK NOW!
+
+Every wrong connection affecting my destiny be cut off in Jesus name!
+
+I will not walk in error!
+I will not miss my timing!
+
+I receive divine speed!
+I receive divine accuracy!
+
+I am aligned with God's will!
+I am aligned with my destiny!
+I am aligned with this season!
+
+From tonight, my life moves forward with clarity and power! In Jesus name!</p></div>
+ <span class="pr-st">Personal Prayer Focus</span>
+ <p class="pr-txt">Lord, align me completely with Your will.
+
+Show me what I need to let go of.
+Show me what I need to embrace.
+Show me what I need to correct.
+
+I surrender my agenda.
+I surrender my will.
+I surrender my understanding.
+
+Have Your way in my life.
+Order my steps.
+Order my relationships.
+Order my decisions.
+
+I choose alignment over convenience.
+I choose Your will over my comfort.
+
+In Jesus name. Amen.</p>
+ <div class="pr-key d2">"Lord, align me completely with Your will. I surrender everything that is out of order."</div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<! DAY 3 >
+<div class="day-section d3" id="day3">
+ <div class="day-header d3">
+ <p class="day-num">Night Three &bull; Sunday 17th May, 2026</p>
+ <h2 class="day-name">When God Speaks</h2>
+ <p class="day-theme">Manifestation</p>
+ <p class="day-tagline">"God does not speak to impress. He speaks to manifest."</p>
+ </div>
+ <div class="sec-btns d3">
+ <button class="sec-btn active" onclick="switchSec('d3','flow',this)"><span class="sec-btn-icon">🔥</span><span class="sec-btn-label">Prophetic Flow</span><span class="sec-btn-sub">Live Session Script</span></button>
+ <button class="sec-btn" onclick="switchSec('d3','teach',this)"><span class="sec-btn-icon">📖</span><span class="sec-btn-label">Teaching</span><span class="sec-btn-sub">Full Sermon Notes</span></button>
+ <button class="sec-btn" onclick="switchSec('d3','pray',this)"><span class="sec-btn-icon">🙏</span><span class="sec-btn-label">Prayer</span><span class="sec-btn-sub">Declarations &amp; Prayer</span></button>
+ </div>
+ <! D3 FLOW >
+ <div class="panel active" id="d3-flow">
+ <div class="flow-card d3"><div class="flow-head"><span>🔥</span><span class="flow-title">Opening Charge</span></div><div class="flow-body"><p class="flow-text">Beloved, welcome to the final day… the day of manifestation.
+
+Day 1 brought clarity.
+Day 2 brought alignment.
+But tonight… God will bring evidence.
+
+This is the night where what God has been saying begins to take form.
+
+Because when God finishes speaking… manifestation begins.</p></div></div>
+ <div class="flow-card d3"><div class="flow-head"><span>🔥</span><span class="flow-title">Activation Prayer</span></div><div class="flow-body"><div class="decl d3"><p>"Lord, let there be manifestation in my life tonight!"
+
+Pray it with expectation… Because tonight is not for explanation it is for demonstration.</p></div></div></div>
+ <div class="flow-card d3"><div class="flow-head"><span>🔥</span><span class="flow-title">Prophetic Exhortation</span></div><div class="flow-body"><p class="flow-text">Hear this deeply…
+
+It is possible to hear God and still not see results… If there is no release of manifestation.
+
+But tonight, that changes.
+
+This is the night where:
+Invisible things become visible
+Spiritual things become tangible
+Prophetic words become reality
+
+God is about to put evidence on your life.</p></div></div>
+ <div class="flow-card d3"><div class="flow-head"><span>🔥</span><span class="flow-title">Manifestation Declarations</span></div><div class="flow-body"><div class="decl d3"><p>Every word God has spoken over your life MANIFEST NOW!
+
+Every delayed prophecy COME INTO FULFILLMENT!
+
+Every invisible blessing BECOME VISIBLE!
+
+Receive undeniable results!
+Receive tangible evidence!
+
+From tonight, your life will show that God has spoken!</p></div></div></div>
+ <div class="flow-card d3"><div class="flow-head"><span>🔥</span><span class="flow-title">Word Ministration Flow</span></div><div class="flow-body"><p class="flow-text">There are people here…
+
+You have heard… you have aligned… But you are asking, "When will it happen?"
+
+I hear the Lord say: "The waiting season is over."
+
+Some of you will enter sudden manifestations.
+Some will experience unusual speed.
+
+Things that should take years… will happen in a short time.
+
+Because when God speaks and releases… Time bows.</p></div></div>
+ <div class="flow-card d3"><div class="flow-head"><span>🔥</span><span class="flow-title">Altar Moment</span></div><div class="flow-body"><div class="decl d3"><p>"Lord, I surrender completely.
+Let Your word find expression in my life.
+From today, I walk in obedience and manifestation."</p></div><p class="flow-text" style="margin-top:14px;">Something has shifted.</p></div></div>
+ <div class="flow-card d3"><div class="flow-head"><span>🔥</span><span class="flow-title">Final Charge</span></div><div class="flow-body"><p class="flow-text">Hear this as we close…
+
+God has spoken.
+Alignment has taken place.
+Now manifestation has begun.
+
+Guard this season. Walk in obedience.
+
+Your life will carry undeniable proof that God has spoken!</p></div></div>
+ </div>
+ <! D3 TEACHING >
+ <div class="panel" id="d3-teach">
+ <div class="scr d3"><span class="scr-ref">Scripture Focus: Ezekiel 12:28 | Mark 4:26-29 | Hebrews 10:23</span><p class="scr-txt">"The word… shall be no more prolonged…" &bull; "First the blade, then the ear, after that the full corn…"</p></div>
+ <div class="iq"><p>Manifestation is the visible expression of God's invisible word. It is when what God has said becomes your reality.</p></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d3">1</span><span class="ptitle">Manifestation Is Tied to God's Word</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d3"><span class="scr-ref">Ezekiel 12:28</span><p class="scr-txt">There shall none of my words be prolonged any more, but the word which I have spoken shall be done, saith the Lord God.</p></div><p class="ptext">If God has spoken… it must come to pass. God is not a talker He is a performer. Every word God has released over your life carries an assignment to manifest. It is not a wish. It is not a possibility. It is a certainty. The only question is timing.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d3">2</span><span class="ptitle">There Is a Process Before Manifestation</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d3"><span class="scr-ref">Mark 4:28</span><p class="scr-txt">For the earth bringeth forth fruit of herself; first the blade, then the ear, after that the full corn in the ear.</p></div><p class="ptext">Many people quit because they don't understand process. Every word from God goes through stages.
+
+But hear this… delay is not denial.
+
+The farmer does not dig up the seed to check if it is growing. He trusts the process. Give God's word time to do its underground work.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d3">3</span><span class="ptitle">Manifestation Requires Faith and Holding On</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d3"><span class="scr-ref">Hebrews 10:23</span><p class="scr-txt">Let us hold fast the profession of our faith without wavering; for he is faithful that promised.</p></div><p class="ptext">You don't drop the word because of pressure. You hold it… speak it… act on it.
+
+The enemy's greatest strategy is not to prevent the word from coming. It is to make you let go of the word before it manifests.
+
+Hold fast. The word will speak.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d3">4</span><span class="ptitle">The Move of God Is Both Sudden and Strategic</span><span class="parrow">▼</span></div><div class="pbody"><div class="scr d3"><span class="scr-ref">Acts 2:2</span><p class="scr-txt">And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.</p></div><p class="ptext">God can move suddenly… But He prepares people gradually.
+
+The disciples waited 10 days. Then suddenly the Holy Spirit came. The waiting was not wasted. It was preparation.
+
+When preparation meets divine timing… manifestation erupts.
+
+Your waiting season is not empty. It is full of invisible preparation.</p></div></div>
+ <div class="tp"><div class="tp-head" onclick="tog(this)"><span class="pnum d3">5</span><span class="ptitle">How to Position Yourself for Manifestation</span><span class="parrow">▼</span></div><div class="pbody"><p class="ptext">Guard the word do not let doubt or people steal what God has said.
+
+Act on the instruction faith without works is dead.
+
+Stay expectant expectation is the posture of faith.
+
+Keep your confession right what you say about your situation either aligns with the word or contradicts it.
+
+Because manifestation is not a possibility… It is a certainty when God has spoken.</p></div></div>
+ <div class="iq"><p>"Your waiting season is ending. You are stepping into manifestation. Things will begin to show. Guard the word. Act on the instruction. Stay expectant."</p></div>
+ </div>
+ <! D3 PRAYER >
+ <div class="panel" id="d3-pray">
+ <div class="pr-card d3">
+ <div class="pr-head"><span class="pr-icon">🙏</span><p class="pr-title">Day 3 Prayers &amp; Declarations</p><p class="pr-sub">Manifestation Releasing What God Has Spoken</p></div>
+ <div class="pr-body d3">
+ <span class="pr-st">Opening Prayer</span>
+ <p class="pr-txt">Father, in the name of Jesus…
+
+Let there be manifestation in every life here.
+
+Let every word spoken become reality.
+Let every delayed promise come alive.
+Let every invisible blessing become visible.
+
+Let there be speed, evidence, and testimonies.
+
+From tonight… their lives will not remain the same. In Jesus name. Amen.</p>
+ <span class="pr-st">Prophetic Declarations</span>
+ <div class="pr-decl"><p>From tonight, I step into manifestation!
+
+Every good thing that has been delayed APPEAR NOW!
+
+Every closed chapter of struggle END NOW!
+
+Every delayed prophecy come into fulfillment in Jesus name!
+
+Every word God has spoken over my life manifest now!
+
+I enter my season of results!
+I enter my season of testimonies!
+
+My life carries undeniable proof that God has spoken!
+
+The waiting season is over!
+Speed is my portion!
+Manifestation is my reality!
+
+In Jesus name!</p></div>
+ <span class="pr-st">Surrender Prayer</span>
+ <p class="pr-txt">Lord, I surrender completely.
+
+Let Your word find full expression in my life.
+
+I will not let go of what You have spoken.
+I will not be moved by what I see.
+I will not be shaken by what I feel.
+
+I hold fast to Your word.
+I act on Your instructions.
+I stay expectant in my spirit.
+
+From today, I walk in obedience and manifestation.
+
+Let my life be a testimony that God has spoken.
+
+In Jesus name. Amen.</p>
+ <div class="pr-key d3">"Lord, let Your word find full expression in my life. I step into manifestation now."</div>
+ </div>
+ </div>
+ </div>
+</div>
+
+</main>
+<footer>
+ <div class="f-logo">GOZOM</div>
+ <p class="f-sub">International Ministries</p>
+ <a href="https://wa.me/2348147560000" class="f-wa" target="_blank">
+ <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+ Contact Apostle on WhatsApp
+ </a>
+ <p class="f-copy">When God Speaks 2026 &bull; Gozom International Ministries &bull; Apostle Oluwaseun Israel</p>
+</footer>
+<script>
+function switchDay(d,btn){
+ document.querySelectorAll('.day-section').forEach(s=>s.classList.remove('active'));
+ document.querySelectorAll('.day-nav-btn').forEach(b=>b.classList.remove('active'));
+ document.getElementById('day'+d).classList.add('active');
+ btn.classList.add('active');
+ window.scrollTo({top:document.querySelector('.day-nav').offsetTop,behavior:'smooth'});
+}
+function switchSec(day,sec,btn){
+ var d=document.getElementById('day'+day.replace('d',''));
+ d.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+ d.querySelectorAll('.sec-btn').forEach(b=>b.classList.remove('active'));
+ document.getElementById(day+'-'+sec).classList.add('active');
+ btn.classList.add('active');
+}
+function tog(h){
+ var b=h.nextElementSibling;
+ var a=h.querySelector('.parrow');
+ var o=b.classList.contains('open');
+ b.classList.toggle('open',!o);
+ a.classList.toggle('open',!o);
+}
+</script>
+</body>
+</html>
